@@ -27,19 +27,20 @@ let sayCurrentDir = `You are currently in ${process.cwd()}`
 console.log(sayCurrentDir)
 
 const rl = createInterface({input: process.stdin, output: process.stdout})
-// rl.on('close', () => {
 
-//     let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
-//     console.log(sayBuyMessage)
+let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
 
-//     exit();
-//   });
+function sayBuy(){
+    console.log(sayBuyMessage)
+}
+
+rl.on('close', () => {
+    sayBuy()
+    rl.close()
+})
 
 rl.on("line", async (line) => {
-
-   console.log(line)
    if(line==".exit"){
     rl.close()
    }
-
 })
