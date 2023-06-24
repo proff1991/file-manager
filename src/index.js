@@ -15,7 +15,6 @@ if (username && username.length > checkUsersName.length) {
 
 }
 
-
 let sayHelloMessage = `Welcome to the File Manager, ${process.env.username}!`
 console.log(sayHelloMessage)
 
