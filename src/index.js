@@ -1,11 +1,13 @@
 import { EOL, homedir } from 'os'
 import { EventEmitter } from 'node:events'
 import { createInterface } from 'readline'
+let __dirname = homedir()
 
 const emitter = new EventEmitter()
 const checkUsersName = '--username='
 const unknownUsersName = 'noname'
-const unknownOperation = 'Invalid input'
+const unknownOperationMessage = 'Invalid input'
+const operationErrorMessage = 'Operation failed'
 
 let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName))
 
@@ -22,7 +24,7 @@ if (username && username.length > checkUsersName.length) {
 let sayHelloMessage = `Welcome to the File Manager, ${process.env.username}!`
 console.log(sayHelloMessage)
 
-process.chdir(homedir())
+process.chdir(__dirname)
 
 let sayCurrentDir = `You are currently in ${process.cwd()}`
 console.log(sayCurrentDir)
@@ -52,9 +54,14 @@ rl.on('line', async (line) => {
     switch(line){
         case '.exit': {
             rl.close()
+            break
+        }
+        case '.exit2': {
+            rl.close()
+            break
         }
         default: {
-            console.error(unknownOperation)
+            console.error(unknownOperationMessage)
         }
     }
 
