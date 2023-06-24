@@ -5,7 +5,7 @@ const unknownUsersName = "noname"
 
 let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName));
 
-if (username && username.length > checkUsersName) {
+if (username && username.length > checkUsersName.length) {
 
     process.env.username = username.split(checkUsersName)[1]
 
@@ -15,5 +15,6 @@ if (username && username.length > checkUsersName) {
 
 }
 
+let sayHelloMessage = `Welcome to the File Manager, ${process.env.username}!`
 
-console.log(process.env.username)
+console.log(sayHelloMessage)
