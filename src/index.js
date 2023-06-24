@@ -1,6 +1,5 @@
 import { EOL, homedir } from "os";
 
-
 const checkUsersName = "--username="
 const unknownUsersName = "noname"
 
