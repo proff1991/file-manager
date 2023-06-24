@@ -1,6 +1,6 @@
-import { EOL, homedir } from 'os';
-import { EventEmitter } from 'node:events';
-import { createInterface } from "readline";
+import { EOL, homedir } from 'os'
+import { EventEmitter } from 'node:events'
+import { createInterface } from "readline"
 
 const emitter = new EventEmitter()
 const checkUsersName = '--username='
@@ -26,7 +26,17 @@ process.chdir(homedir())
 let sayCurrentDir = `You are currently in ${process.cwd()}`
 console.log(sayCurrentDir)
 
-let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
-console.log(sayBuyMessage)
+const rl = createInterface({input: process.stdin, output: process.stdout})
+// rl.on('close', () => {
 
-const rl = createInterface({input: stdin, output: stdout})
+//     let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
+//     console.log(sayBuyMessage)
+
+//     exit();
+//   });
+
+
+
+
+
+
