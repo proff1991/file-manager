@@ -1,2 +1,3 @@
-// console.log("Hello")
-import process from "process";
+for(let elem of process.argv){
+    console.log(elem)
+}
