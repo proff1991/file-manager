@@ -28,8 +28,13 @@ console.log(sayHelloMessage)
 
 process.chdir(__dirname)
 
-let sayCurrentDir = `You are currently in ${process.cwd()}`
-console.log(sayCurrentDir)
+
+function sayCurrentlyFolder(path){
+    console.log(`You are currently in ${path}`)
+}
+
+sayCurrentlyFolder(__dirname)
+
 
 const rl = createInterface({input: process.stdin, output: process.stdout})
 
@@ -38,6 +43,8 @@ let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, 
 function sayBuy(){
     console.log(sayBuyMessage)
 }
+
+
 
 rl.on('close', () => {
     sayBuy()
@@ -58,6 +65,11 @@ rl.on('line', async (line) => {
             break
         }
         case 'up': {
+            __dirname = navigationUp(__dirname)
+            sayCurrentlyFolder(__dirname)
+            break
+        }
+        case 'cd': {
             __dirname = navigationUp(__dirname)
             console.log(__dirname)
             break
