@@ -1,6 +1,8 @@
 import { EOL, homedir } from 'os'
 import { EventEmitter } from 'node:events'
 import { createInterface } from 'readline'
+import navigationUp from './files/navigationUp.js'
+
 let __dirname = homedir()
 
 const emitter = new EventEmitter()
@@ -42,22 +44,22 @@ rl.on('close', () => {
     rl.close()
 })
 
+// а нужен ли этот пункт?
+
 rl.on('SIGINT', () => {
     rl.close()
 })
 
 rl.on('line', async (line) => {
-    // if(line=='.exit'){
-    //     rl.close()
-    // }
 
     switch(line){
         case '.exit': {
             rl.close()
             break
         }
-        case '.exit2': {
-            rl.close()
+        case 'up': {
+            __dirname = navigationUp(__dirname)
+            console.log(__dirname)
             break
         }
         default: {
