@@ -22,5 +22,5 @@ console.log(sayHelloMessage)
 
 process.chdir(homedir())
 
-let sayCurrentDir = `You are currently in ${process.cwd()} :`
+let sayCurrentDir = `You are currently in ${process.cwd()}`
 console.log(sayCurrentDir)
