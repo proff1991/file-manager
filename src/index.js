@@ -35,8 +35,11 @@ const rl = createInterface({input: process.stdin, output: process.stdout})
 //     exit();
 //   });
 
+rl.on("line", async (line) => {
 
+   console.log(line)
+   if(line==".exit"){
+    rl.close()
+   }
 
-
-
-
+})
