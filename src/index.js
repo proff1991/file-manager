@@ -59,7 +59,9 @@ rl.on('SIGINT', () => {
 
 rl.on('line', async (line) => {
 
-    switch(line){
+    let arrayOfArguments = line.includes('"') ? line.split('"').map(elem => String(elem).trim()) : line.split(' ')
+    console.log(arrayOfArguments)
+    switch(arrayOfArguments[0]){
         case '.exit': {
             rl.close()
             break
