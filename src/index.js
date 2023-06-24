@@ -1,5 +1,6 @@
 import { EOL, homedir } from 'os';
 import { EventEmitter } from 'node:events';
+import { createInterface } from "readline";
 
 const emitter = new EventEmitter()
 const checkUsersName = '--username='
@@ -27,3 +28,5 @@ console.log(sayCurrentDir)
 
 let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
 console.log(sayBuyMessage)
+
+const rl = createInterface({input: stdin, output: stdout})
