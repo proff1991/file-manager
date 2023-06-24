@@ -23,3 +23,6 @@ process.chdir(homedir())
 
 let sayCurrentDir = `You are currently in ${process.cwd()}`
 console.log(sayCurrentDir)
+
+let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
+console.log(sayBuyMessage)
