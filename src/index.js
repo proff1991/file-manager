@@ -1,12 +1,12 @@
 import { EOL, homedir } from 'os'
 import { EventEmitter } from 'node:events'
-import { createInterface } from "readline"
+import { createInterface } from 'readline'
 
 const emitter = new EventEmitter()
 const checkUsersName = '--username='
 const unknownUsersName = 'noname'
 
-let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName));
+let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName))
 
 if (username && username.length > checkUsersName.length) {
 
@@ -39,8 +39,12 @@ rl.on('close', () => {
     rl.close()
 })
 
-rl.on("line", async (line) => {
-   if(line==".exit"){
+rl.on('SIGINT', () => {
+    rl.close()
+})
+
+rl.on('line', async (line) => {
+   if(line=='.exit'){
     rl.close()
    }
 })
