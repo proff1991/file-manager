@@ -1,7 +1,9 @@
-import { EOL, homedir } from "os";
+import { EOL, homedir } from 'os';
+import { EventEmitter } from 'node:events';
 
-const checkUsersName = "--username="
-const unknownUsersName = "noname"
+const emitter = new EventEmitter()
+const checkUsersName = '--username='
+const unknownUsersName = 'noname'
 
 let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName));
 
