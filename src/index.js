@@ -1,4 +1,6 @@
-import { EOL } from "os";
+import { EOL, homedir } from "os";
+
+
 
 const checkUsersName = "--username="
 const unknownUsersName = "noname"
@@ -15,6 +17,11 @@ if (username && username.length > checkUsersName.length) {
 
 }
 
-let sayHelloMessage = `Welcome to the File Manager, ${process.env.username}!`
 
+let sayHelloMessage = `Welcome to the File Manager, ${process.env.username}!`
 console.log(sayHelloMessage)
+
+process.chdir(homedir())
+
+let sayCurrentDir = `You are currently in ${process.cwd()} :`
+console.log(sayCurrentDir)
