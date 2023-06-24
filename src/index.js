@@ -5,6 +5,7 @@ import { createInterface } from 'readline'
 const emitter = new EventEmitter()
 const checkUsersName = '--username='
 const unknownUsersName = 'noname'
+const unknownOperation = 'Invalid input'
 
 let username = process.argv.slice(2).find( arg => arg.includes(checkUsersName))
 
@@ -44,7 +45,17 @@ rl.on('SIGINT', () => {
 })
 
 rl.on('line', async (line) => {
-   if(line=='.exit'){
-    rl.close()
-   }
+    // if(line=='.exit'){
+    //     rl.close()
+    // }
+
+    switch(line){
+        case '.exit': {
+            rl.close()
+        }
+        default: {
+            console.error(unknownOperation)
+        }
+    }
+
 })
