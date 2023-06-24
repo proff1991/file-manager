@@ -59,10 +59,22 @@ rl.on('SIGINT', () => {
 
 rl.on('line', async (line) => {
 
-    let [lineCommand, ...lineArguments] = line.includes('"') ? line.split('"').map(elem => String(elem).trim()) : line.split(' ')
+    let [lineCommand, ...lineArguments] = line.includes('"') 
+    ? line.split('"').map(elem => String(elem).trim()) 
+    : line.split(' ');
+
+    if(lineCommand.includes(' ')){
+        let bufferArray = lineCommand.split(' ')
+        lineCommand = bufferArray[0]
+        lineArguments = bufferArray.concat(lineArguments)
+    } 
+
+    lineArguments = lineArguments.reduce( (acc = [], item) => item === "" ? acc : acc.concat(item), [])
+
     console.log(lineCommand)
-    console.log(arrayOfArguments)
-    switch(arrayOfArguments[0]){
+    console.log(lineArguments)
+
+    switch(lineCommand.toLowerCase()){
         case '.exit': {
             rl.close()
             break
