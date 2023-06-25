@@ -4,12 +4,11 @@ const errorMessage = "Operation failed"
 
 const actionRename = async (__dirname, file, newFileName) => {
 
-    let currentFilePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
-    let newFilePath = pathIsAbsolute(newFileName) ? newFileName : pathJoin(pathDirname(currentFilePath), newFileName)
-
     try {
 
-    await frRename(currentFilePath, newFilePath);
+        let currentFilePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
+        let newFilePath = pathIsAbsolute(newFileName) ? newFileName : pathJoin(pathDirname(currentFilePath), newFileName)        
+        await frRename(currentFilePath, newFilePath);
 
     }catch(e){
 
