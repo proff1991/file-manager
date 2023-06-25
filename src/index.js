@@ -71,8 +71,8 @@ rl.on('line', async (line) => {
 
     lineArguments = lineArguments.reduce( (acc = [], item) => item === "" ? acc : acc.concat(item), [])
 
-    console.log(lineCommand)
-    console.log(lineArguments)
+    // console.log(lineCommand)
+    // console.log(lineArguments)
 
     switch(lineCommand.toLowerCase()){
         case '.exit': {
