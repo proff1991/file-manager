@@ -3,7 +3,7 @@ import { EventEmitter } from 'node:events'
 import { createInterface } from 'readline'
 import navigationUp from './files/navigationUp.js'
 import navigationCd from './files/navigationCd.js'
-
+import navigationList from './files/navigationList.js'
 
 let __dirname = homedir()
 
@@ -74,6 +74,7 @@ rl.on('line', async (line) => {
     // console.log(lineArguments)
 
     switch(lineCommand.toLowerCase()){
+        
         case '.exit': {
             rl.close()
             break
@@ -88,6 +89,11 @@ rl.on('line', async (line) => {
             sayCurrentlyFolder(__dirname)
             break
         }
+        case 'ls': {
+            await navigationList(__dirname)
+            sayCurrentlyFolder(__dirname)
+            break
+        }        
         default: {
             console.error(unknownOperationMessage)
         }
