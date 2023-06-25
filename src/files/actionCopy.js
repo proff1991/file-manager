@@ -4,6 +4,9 @@ import { join as pathJoin, isAbsolute as pathIsAbsolute } from "path";
 const errorMessage = "Operation failed"
 
 const actionCopy = async (__dirname, file, newFileName) => {
+    console.log(__dirname)
+    console.log(file)
+    console.log(newFileName)
 
     let currentFilePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
     let newFilePath = pathIsAbsolute(newFileName) ? newFileName : pathJoin(pathDirname(currentFilePath), newFileName)
@@ -15,7 +18,6 @@ const actionCopy = async (__dirname, file, newFileName) => {
 
         let readStream = fsCreateReadStream(currentFilePath)
         let writeStream = fsCreateWriteStream(newFilePath)
-
         await streamPipeline(readStream, writeStream)
 
     }catch(e){

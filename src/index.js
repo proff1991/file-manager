@@ -114,7 +114,7 @@ rl.on('line', async (line) => {
             sayCurrentlyFolder(__dirname)
             break
         }            
-        case 'copy': {
+        case 'cp': {
             await actionCopy(__dirname, lineArguments[0], lineArguments[1])
             sayCurrentlyFolder(__dirname)
             break
