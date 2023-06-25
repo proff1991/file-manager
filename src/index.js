@@ -1,4 +1,4 @@
-import { EOL, homedir } from 'os'
+import { homedir } from 'os'
 import { EventEmitter } from 'node:events'
 import { createInterface } from 'readline'
 import navigationUp from './files/navigationUp.js'
@@ -9,7 +9,8 @@ import actionCreate from './files/actionCreate.js'
 import actionRename from './files/actionRename.js'
 import actionCopy from './files/actionCopy.js'
 import actionDelete from './files/actionDelete.js'
-// import actionMove from './files/actionMove.js'
+
+const osObject = {}
 
 let __dirname = homedir()
 
@@ -130,7 +131,29 @@ rl.on('line', async (line) => {
             await actionDelete(__dirname, lineArguments[0])            
             sayCurrentlyFolder(__dirname)
             break
+        }
+        case 'os': {
+
+            console.log(lineArguments[0])
+
+            switch(lineArguments[0]){
+                case '--EOL': {
+                    console.log("Это ЕОЛ")
+                    break
+                }
+                case '--cpus': {
+                    console.log("Это ЕОЛ")
+                    break
+                }                
+                default: {
+                    console.error(unknownOperationMessage)
+                }
+
+            }
+
+            break
         }        
+    
         default: {
             console.error(unknownOperationMessage)
         }

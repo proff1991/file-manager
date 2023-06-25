@@ -13,11 +13,11 @@ const actionRead = async (__dirname, file) => {
 
         console.log(data)
 
-     }
+    }
 
     }catch(e){
 
-    console.error(errorMessage)
+        console.error(errorMessage)
     
     }
 
