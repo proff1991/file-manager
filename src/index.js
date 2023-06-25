@@ -7,6 +7,8 @@ import navigationList from './files/navigationList.js'
 import actionRead from './files/actionRead.js'
 import actionCreate from './files/actionCreate.js'
 import actionRename from './files/actionRename.js'
+import actionCopy from './files/actionCopy.js'
+
 
 let __dirname = homedir()
 
@@ -111,7 +113,12 @@ rl.on('line', async (line) => {
             await actionRename(__dirname, lineArguments[0], lineArguments[1])
             sayCurrentlyFolder(__dirname)
             break
-        }             
+        }            
+        case 'copy': {
+            await actionCopy(__dirname, lineArguments[0], lineArguments[1])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                
         default: {
             console.error(unknownOperationMessage)
         }
