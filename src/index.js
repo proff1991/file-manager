@@ -2,6 +2,8 @@ import { EOL, homedir } from 'os'
 import { EventEmitter } from 'node:events'
 import { createInterface } from 'readline'
 import navigationUp from './files/navigationUp.js'
+import navigationCd from './files/navigationCd.js'
+
 
 let __dirname = homedir()
 
@@ -35,7 +37,6 @@ function sayCurrentlyFolder(path){
 
 sayCurrentlyFolder(__dirname)
 
-
 const rl = createInterface({input: process.stdin, output: process.stdout})
 
 let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
@@ -43,8 +44,6 @@ let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, 
 function sayBuy(){
     console.log(sayBuyMessage)
 }
-
-
 
 rl.on('close', () => {
     sayBuy()
@@ -85,8 +84,8 @@ rl.on('line', async (line) => {
             break
         }
         case 'cd': {
-            __dirname = navigationUp(__dirname)
-            console.log(__dirname)
+            __dirname = await navigationCd(__dirname, lineArguments[0])
+            sayCurrentlyFolder(__dirname)
             break
         }
         default: {
