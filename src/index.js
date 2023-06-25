@@ -45,7 +45,7 @@ sayCurrentlyFolder(__dirname)
 
 const rl = createInterface({input: process.stdin, output: process.stdout})
 
-let sayBuyMessage = `Thank you for using File Manager, ${process.env.username}, goodbye!`
+let sayBuyMessage = `\nThank you for using File Manager, ${process.env.username}, goodbye!`
 
 function sayBuy(){
     console.log(sayBuyMessage)
@@ -124,7 +124,13 @@ rl.on('line', async (line) => {
             await actionDelete(__dirname, lineArguments[0])
             sayCurrentlyFolder(__dirname)
             break
-        }                        
+        }
+        case 'mv': {
+            await actionCopy(__dirname, lineArguments[0], lineArguments[1])
+            await actionDelete(__dirname, lineArguments[0])            
+            sayCurrentlyFolder(__dirname)
+            break
+        }        
         default: {
             console.error(unknownOperationMessage)
         }

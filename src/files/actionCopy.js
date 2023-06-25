@@ -8,16 +8,12 @@ const actionCopy = async (__dirname, file, newFileName) => {
     try {
 
         let currentFilePath = pathIsAbsolute(file) 
-        ? file 
+        ? pathJoin(file)
         : pathJoin(__dirname, file)
 
         let newFilePath = pathIsAbsolute(newFileName) 
-        ? newFileName 
-        : pathJoin(pathDirname(currentFilePath), newFileName)
-
-        newFilePath = pathParse(currentFilePath)['base'] == pathParse(newFilePath)['base'] 
-        ? newFilePath
-        : newFilePath + pathParse(currentFilePath)['base']
+        ? pathJoin(newFileName, pathParse(currentFilePath)['base']) 
+        : pathJoin(pathDirname(currentFilePath), newFileName, pathParse(currentFilePath)['base'])
 
         let readStream = fsCreateReadStream(currentFilePath)
         let writeStream = fsCreateWriteStream(newFilePath)
