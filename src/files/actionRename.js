@@ -1,20 +1,15 @@
-import { createReadStream as fsCreateReadStream } from 'fs'
-import { join as pathJoin, isAbsolute as pathIsAbsolute } from "path";
+import { rename as frRename } from 'fs/promises';
+import { join as pathJoin, isAbsolute as pathIsAbsolute, dirname as pathDirname } from "path";
 const errorMessage = "Operation failed"
 
-const actionRename = async (__dirname, file) => {
+const actionRename = async (__dirname, file, newFileName) => {
 
-    let filePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
+    let currentFilePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
+    let newFilePath = pathIsAbsolute(newFileName) ? newFileName : pathJoin(pathDirname(currentFilePath), newFileName)
 
     try {
 
-    const stream = fsCreateReadStream(filePath, 'utf8')
-
-    for await (const data of stream) {
-
-        console.log(data)
-
-    }
+    await frRename(currentFilePath, newFilePath);
 
     }catch(e){
 

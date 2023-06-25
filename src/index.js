@@ -4,8 +4,9 @@ import { createInterface } from 'readline'
 import navigationUp from './files/navigationUp.js'
 import navigationCd from './files/navigationCd.js'
 import navigationList from './files/navigationList.js'
-import actionRename from './files/actionRename.js'
+import actionRead from './files/actionRead.js'
 import actionCreate from './files/actionCreate.js'
+import actionRename from './files/actionRename.js'
 
 let __dirname = homedir()
 
@@ -97,7 +98,7 @@ rl.on('line', async (line) => {
             break
         }
         case 'cat': {
-            await actionRename(__dirname, lineArguments[0])
+            await actionRead(__dirname, lineArguments[0])
             sayCurrentlyFolder(__dirname)
             break
         }
@@ -105,7 +106,12 @@ rl.on('line', async (line) => {
             await actionCreate(__dirname, lineArguments[0])
             sayCurrentlyFolder(__dirname)
             break
-        }                        
+        }   
+        case 'rn': {
+            await actionRename(__dirname, lineArguments[0], lineArguments[1])
+            sayCurrentlyFolder(__dirname)
+            break
+        }             
         default: {
             console.error(unknownOperationMessage)
         }
