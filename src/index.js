@@ -4,6 +4,7 @@ import { createInterface } from 'readline'
 import navigationUp from './files/navigationUp.js'
 import navigationCd from './files/navigationCd.js'
 import navigationList from './files/navigationList.js'
+import actionRename from './files/actionRename.js'
 
 let __dirname = homedir()
 
@@ -93,7 +94,12 @@ rl.on('line', async (line) => {
             await navigationList(__dirname)
             sayCurrentlyFolder(__dirname)
             break
-        }        
+        }
+        case 'cat': {
+            await actionRename(__dirname, lineArguments[0])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                
         default: {
             console.error(unknownOperationMessage)
         }
