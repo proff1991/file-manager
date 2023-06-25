@@ -4,17 +4,16 @@ const errorMessage = "Operation failed"
 
 const actionRead = async (__dirname, file) => {
 
-    let filePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
-
     try {
 
-    const stream = fsCreateReadStream(filePath, 'utf8')
+        let filePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
+        const stream = fsCreateReadStream(filePath, 'utf8')
 
-    for await (const data of stream) {
+        for await (const data of stream) {
 
         console.log(data)
 
-    }
+     }
 
     }catch(e){
 

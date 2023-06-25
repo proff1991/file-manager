@@ -8,7 +8,8 @@ import actionRead from './files/actionRead.js'
 import actionCreate from './files/actionCreate.js'
 import actionRename from './files/actionRename.js'
 import actionCopy from './files/actionCopy.js'
-
+import actionDelete from './files/actionDelete.js'
+// import actionMove from './files/actionMove.js'
 
 let __dirname = homedir()
 
@@ -118,7 +119,12 @@ rl.on('line', async (line) => {
             await actionCopy(__dirname, lineArguments[0], lineArguments[1])
             sayCurrentlyFolder(__dirname)
             break
-        }                
+        }
+        case 'rm': {
+            await actionDelete(__dirname, lineArguments[0])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                        
         default: {
             console.error(unknownOperationMessage)
         }

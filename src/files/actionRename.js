@@ -12,7 +12,7 @@ const actionRename = async (__dirname, file, newFileName) => {
 
     }catch(e){
 
-    console.error(errorMessage)
+        console.error(errorMessage)
     
     }
 

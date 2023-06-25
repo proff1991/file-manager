@@ -5,19 +5,19 @@ const errorMessage = "Operation failed"
 
 const actionCopy = async (__dirname, file, newFileName) => {
 
-    let currentFilePath = pathIsAbsolute(file) 
+    try {
+
+        let currentFilePath = pathIsAbsolute(file) 
         ? file 
         : pathJoin(__dirname, file)
 
-    let newFilePath = pathIsAbsolute(newFileName) 
+        let newFilePath = pathIsAbsolute(newFileName) 
         ? newFileName 
         : pathJoin(pathDirname(currentFilePath), newFileName)
 
-    newFilePath = pathParse(currentFilePath)['base'] == pathParse(newFilePath)['base'] 
+        newFilePath = pathParse(currentFilePath)['base'] == pathParse(newFilePath)['base'] 
         ? newFilePath
         : newFilePath + pathParse(currentFilePath)['base']
-
-    try {
 
         let readStream = fsCreateReadStream(currentFilePath)
         let writeStream = fsCreateWriteStream(newFilePath)
@@ -25,7 +25,7 @@ const actionCopy = async (__dirname, file, newFileName) => {
 
     }catch(e){
 
-    console.error(errorMessage)
+        console.error(errorMessage)
     
     }
 

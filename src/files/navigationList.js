@@ -14,8 +14,6 @@ class FilesAndFolders {
 
 function checkType(fileObject){
 
-    const errorMessage = 'unknown'
-
     try{
 
         if(fileObject.isFile()){
@@ -28,7 +26,7 @@ function checkType(fileObject){
 
     }catch{
 
-        return errorMessage
+        return typeOtherName
 
     }
 
