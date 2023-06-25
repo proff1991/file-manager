@@ -5,6 +5,7 @@ import navigationUp from './files/navigationUp.js'
 import navigationCd from './files/navigationCd.js'
 import navigationList from './files/navigationList.js'
 import actionRename from './files/actionRename.js'
+import actionCreate from './files/actionCreate.js'
 
 let __dirname = homedir()
 
@@ -99,7 +100,12 @@ rl.on('line', async (line) => {
             await actionRename(__dirname, lineArguments[0])
             sayCurrentlyFolder(__dirname)
             break
-        }                
+        }
+        case 'add': {
+            await actionCreate(__dirname, lineArguments[0])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                        
         default: {
             console.error(unknownOperationMessage)
         }

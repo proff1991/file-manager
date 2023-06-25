@@ -8,9 +8,9 @@ const actionRename = async (__dirname, file) => {
 
     try {
 
-    const readStream = fsCreateReadStream(filePath, 'utf8')
+    const stream = fsCreateReadStream(filePath, 'utf8')
 
-    for await (const data of readStream) {
+    for await (const data of stream) {
 
         console.log(data)
 
@@ -23,6 +23,5 @@ const actionRename = async (__dirname, file) => {
     }
 
 }
-
 
 export default actionRename
