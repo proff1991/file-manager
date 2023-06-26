@@ -25,5 +25,3 @@ export function __username(){
 export function __architecture(){
     console.log(arch())
 }
-
-__eol()

@@ -9,8 +9,17 @@ import actionCreate from './files/actionCreate.js'
 import actionRename from './files/actionRename.js'
 import actionCopy from './files/actionCopy.js'
 import actionDelete from './files/actionDelete.js'
+import { __eol, __cpus, __homedir, __username, __architecture } from './files/osInfo.js'
 
-const osObject = {}
+const osObject = {
+
+    '__eol': __eol,
+    '__cpus': __cpus,
+    '__homedir': __homedir,
+    '__username': __username,
+    '__architecture': __architecture,
+
+}
 
 let __dirname = homedir()
 
@@ -134,20 +143,15 @@ rl.on('line', async (line) => {
         }
         case 'os': {
 
-            console.log(lineArguments[0])
+            let key = String(lineArguments[0].toLocaleLowerCase())
 
-            switch(lineArguments[0]){
-                case '--EOL': {
-                    console.log("Это ЕОЛ")
-                    break
-                }
-                case '--cpus': {
-                    console.log("Это ЕОЛ")
-                    break
-                }                
-                default: {
-                    console.error(unknownOperationMessage)
-                }
+            if(key in osObject){
+
+                osObject[key]()
+
+            }else{
+
+                console.error(unknownOperationMessage)
 
             }
 
