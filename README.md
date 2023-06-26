@@ -7,7 +7,7 @@ Hello! My contacts:
 - [github](https://github.com/proff1991)
 
 
-- The program is started by npm-script `start` in following way:
+The program is started by npm-script `start` in following way:
 ```bash
 npm run start -- --username=your_username
 ```
