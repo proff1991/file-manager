@@ -8,9 +8,7 @@ async function navigationCd(currentPath, argPath) {
 
         argPath = discArray.includes(String(argPath).toUpperCase()) ? (argPath+"\\") : argPath
 
-        console.log(argPath)
-
-        let newPath = pathIsAbsolute(argPath) ? argPath : pathJoin(currentPath, argPath)
+        let newPath = pathIsAbsolute(argPath) ? pathJoin(argPath) : pathJoin(currentPath, argPath)
         await fsAcces(newPath)
         return newPath
 

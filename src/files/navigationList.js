@@ -35,26 +35,33 @@ function checkType(fileObject){
 
 async function navigationList(fullpath) {
 
-    const bufferArray = []
+    try{
+
+        const bufferArray = []
 
 
-    let list = await fsReaddir(pathJoin(fullpath), { withFileTypes: true })
+        let list = await fsReaddir(pathJoin(fullpath), { withFileTypes: true })
+    
+        for( let i = 0 ; i<list.length ; ++i ){
+    
+            bufferArray.push(new FilesAndFolders(list[i]['name'], checkType(list[i])))
+    
+        }
+        
+        const arrayOfFolders = bufferArray.filter(item => item['Type'] == typeFolderName)
+        const arrayOffiles = bufferArray.filter(item => item['Type'] == typeFileName)
+        const table = [...arrayOfFolders, ...arrayOffiles]
+    
+        console.table(table)
 
-    console.log(list)
 
-    for( let i = 0 ; i<list.length ; ++i ){
+    }catch{
 
-        bufferArray.push(new FilesAndFolders(list[i]['name'], checkType(list[i])))
+        console.error('Operation failed')
 
     }
-    
-    const arrayOfFolders = bufferArray.filter(item => item['Type'] == typeFolderName)
-    const arrayOffiles = bufferArray.filter(item => item['Type'] == typeFileName)
-    const table = [...arrayOfFolders, ...arrayOffiles]
 
-    console.table(table)
 
-    
 }
 
 export default navigationList

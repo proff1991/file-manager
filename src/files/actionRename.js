@@ -6,7 +6,7 @@ const actionRename = async (__dirname, file, newFileName) => {
 
     try {
 
-        let currentFilePath = pathIsAbsolute(file) ? file : pathJoin(__dirname, file)
+        let currentFilePath = pathIsAbsolute(file) ? pathJoin(file) : pathJoin(__dirname, file)
         let newFilePath = pathIsAbsolute(newFileName) ? newFileName : pathJoin(pathDirname(currentFilePath), newFileName)        
         await frRename(currentFilePath, newFilePath);
 
