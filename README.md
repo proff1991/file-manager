@@ -6,8 +6,13 @@ Hello! My contacts:
 - [telegram](https://t.me/username118) 
 - [github](https://github.com/proff1991)
 
-
-
+### Interesting features:
+- In the file manager, you can use commands in any case:
+```os --EOL``` ```oS --eOL``` ```OS --EOL```
+- In operating system commands, you can use commands with "--" or with "__":
+```os --EOL``` ```os __EOL```
+- The ```add``` console command can create a file not only in the current directory but also in another folder (if the other folder exist):
+```add new_file_name``` ```add C:\OtherFolder\new_file_name```
 
 The program is started by npm-script `start` in following way:
 ```bash
