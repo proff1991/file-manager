@@ -10,6 +10,7 @@ import actionRename from './files/actionRename.js'
 import actionCopy from './files/actionCopy.js'
 import actionDelete from './files/actionDelete.js'
 import cryptoHash from './files/cryptoHash.js'
+import actionArchive from './files/actionArchive.js'
 import { __eol, __cpus, __homedir, __username, __architecture } from './files/osInfo.js'
 
 const osObject = {
@@ -162,7 +163,17 @@ rl.on('line', async (line) => {
             await cryptoHash(__dirname, lineArguments[0])
             sayCurrentlyFolder(__dirname)
             break
-        }                
+        }
+        case 'compress': {
+            await actionArchive('compress', __dirname, lineArguments[0], lineArguments[1])
+            sayCurrentlyFolder(__dirname)
+            break
+        }
+        case 'decompress': {
+            await actionArchive('decompress', __dirname, lineArguments[0], lineArguments[1])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                                
         default: {
             console.error(unknownOperationMessage)
         }

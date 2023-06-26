@@ -1,5 +1,5 @@
 import { readdir as fsReaddir } from 'fs/promises'
-import { join as pathJoin, resolve } from "path"
+import { join as pathJoin } from "path"
 const typeFileName = 'file'
 const typeFolderName = 'directory'
 const typeOtherName = 'unknown'
