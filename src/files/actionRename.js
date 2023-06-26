@@ -1,6 +1,6 @@
-import { rename as frRename } from 'fs/promises';
-import { join as pathJoin, isAbsolute as pathIsAbsolute, dirname as pathDirname } from "path";
-const errorMessage = "Operation failed"
+import { rename as frRename } from 'fs/promises'
+import { join as pathJoin, isAbsolute as pathIsAbsolute, dirname as pathDirname } from 'path'
+const errorMessage = 'Operation failed'
 
 const actionRename = async (__dirname, file, newFileName) => {
 

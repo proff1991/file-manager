@@ -86,7 +86,7 @@ rl.on('line', async (line) => {
         lineArguments = bufferArray.concat(lineArguments)
     } 
 
-    lineArguments = lineArguments.reduce( (acc = [], item) => item === "" ? acc : acc.concat(item), [])
+    lineArguments = lineArguments.reduce( (acc = [], item) => item === '' ? acc : acc.concat(item), [])
 
     switch(lineCommand.toLowerCase()){
         
@@ -144,15 +144,13 @@ rl.on('line', async (line) => {
         }
         case 'mv': {
             await actionCopy(__dirname, lineArguments[0], lineArguments[1])
-            await actionDelete(__dirname, lineArguments[0],"")            
+            await actionDelete(__dirname, lineArguments[0],'')            
             sayCurrentlyFolder(__dirname)
             break
         }
         case 'os': {
 
             let key = String(lineArguments[0].replace(/\-/g,'_').toLocaleLowerCase())
-
-            console.log(key)
 
             if(key in osObject){
 

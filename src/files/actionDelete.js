@@ -1,5 +1,5 @@
-import { join as pathJoin, isAbsolute as pathIsAbsolute } from "path";
-import { rm as fsRm } from 'fs/promises';
+import { join as pathJoin, isAbsolute as pathIsAbsolute } from 'path'
+import { rm as fsRm } from 'fs/promises'
 
 const actionDelete = async (__dirname, file, errorMessage) => {
 
@@ -10,7 +10,7 @@ const actionDelete = async (__dirname, file, errorMessage) => {
 
     }catch(e){
 
-        errorMessage ? console.error(errorMessage) : ""
+        errorMessage ? console.error(errorMessage) : ''
     
     }
 

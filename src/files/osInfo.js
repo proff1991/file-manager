@@ -1,4 +1,4 @@
-import { EOL, cpus, homedir, userInfo, arch } from 'os';
+import { EOL, cpus, homedir, userInfo, arch } from 'os'
 
 export function __eol(){
     console.log(JSON.stringify(EOL))

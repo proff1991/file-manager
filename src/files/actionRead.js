@@ -1,6 +1,6 @@
 import { createReadStream as fsCreateReadStream } from 'fs'
-import { join as pathJoin, isAbsolute as pathIsAbsolute } from "path";
-const errorMessage = "Operation failed"
+import { join as pathJoin, isAbsolute as pathIsAbsolute } from 'path'
+const errorMessage = 'Operation failed'
 
 const actionRead = async (__dirname, file) => {
 

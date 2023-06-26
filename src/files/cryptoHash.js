@@ -1,7 +1,7 @@
 import { createHash as cryptoCreateHash } from 'crypto'
 import { readFile as fsReadFile } from 'fs/promises'
 import { join as pathJoin, isAbsolute as pathIsAbsolute } from 'path'
-const errorMessage = "Operation failed"
+const errorMessage = 'Operation failed'
 
  async function cryptoHash(__dirname, file){
 

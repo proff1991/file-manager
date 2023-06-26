@@ -1,7 +1,7 @@
 import { createReadStream as fsCreateReadStream, createWriteStream as fsCreateWriteStream } from 'fs'
 import { pipeline as streamPipeline } from 'stream/promises'
-import { join as pathJoin, isAbsolute as pathIsAbsolute, dirname as pathDirname, parse as pathParse } from "path";
-const errorMessage = "Operation failed"
+import { join as pathJoin, isAbsolute as pathIsAbsolute, dirname as pathDirname, parse as pathParse } from 'path'
+const errorMessage = 'Operation failed'
 
 const actionCopy = async (__dirname, file, newFileName) => {
 

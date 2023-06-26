@@ -1,7 +1,7 @@
 import { createWriteStream as fsCreateWriteStream } from 'fs'
 import { readdir as fsReaddir } from 'fs/promises'
-import { join as pathJoin, isAbsolute as pathIsAbsolute , dirname as pathDirname, parse as pathParse } from "path";
-const errorMessage = "Operation failed"
+import { join as pathJoin, isAbsolute as pathIsAbsolute , dirname as pathDirname, parse as pathParse } from 'path'
+const errorMessage = 'Operation failed'
 
 async function checkDir(dirPath){
 
