@@ -9,6 +9,7 @@ import actionCreate from './files/actionCreate.js'
 import actionRename from './files/actionRename.js'
 import actionCopy from './files/actionCopy.js'
 import actionDelete from './files/actionDelete.js'
+import cryptoHash from './files/cryptoHash.js'
 import { __eol, __cpus, __homedir, __username, __architecture } from './files/osInfo.js'
 
 const osObject = {
@@ -156,8 +157,12 @@ rl.on('line', async (line) => {
             }
 
             break
-        }        
-    
+        }
+        case 'hash': {
+            await cryptoHash(__dirname, lineArguments[0])
+            sayCurrentlyFolder(__dirname)
+            break
+        }                
         default: {
             console.error(unknownOperationMessage)
         }
