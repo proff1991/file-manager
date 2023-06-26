@@ -1,10 +1,12 @@
-# Assignment: File Manager
+# File Manager
 
 ## Description
 
 Hello! My contacts:
 - [telegram](https://t.me/username118) 
 - [github](https://github.com/proff1991)
+
+
 
 
 The program is started by npm-script `start` in following way:
