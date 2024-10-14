@@ -5,9 +5,6 @@ import { pipeline as streamPipeline } from 'stream/promises'
 import { join as pathJoin, isAbsolute as pathIsAbsolute, parse as pathParse, dirname as pathDirname } from 'path'
 const errorMessage = 'Operation failed'
 
-import { homedir } from 'os'
-let __dirname = homedir()
-
 async function checkType(exportPath, extension){
 
     let list = await fsReaddir(pathJoin(pathDirname(exportPath)), { withFileTypes: true })
