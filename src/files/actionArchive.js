@@ -47,15 +47,10 @@ async function actionArchive(type, __dirname, currentFile, newFile){
         ? pathJoin(newFile)
         : pathJoin(pathDirname(currentFilePath),"\\", newFile) 
 
-
-        console.log({currentFile,newFile})
-        console.log({currentFileAbs: pathIsAbsolute(currentFile) ,newFileAbs:  pathIsAbsolute(newFile)  })
-
-
         if(type == 'compress'){
-            console.log({currentFilePath, newFilePath})
+            
             newFilePath = newFilePath + "\\" + pathParse(currentFilePath)['base'] + '.br'
-            console.log({newFilePath})
+
         }else if(type == 'decompress'){
             
             newFilePath = pathJoin(newFilePath, await checkType(newFilePath, pathParse(currentFilePath)['name']))
