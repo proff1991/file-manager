@@ -5,6 +5,8 @@ import { pipeline as streamPipeline } from 'stream/promises'
 import { join as pathJoin, isAbsolute as pathIsAbsolute, parse as pathParse, dirname as pathDirname } from 'path'
 const errorMessage = 'Operation failed'
 
+import { homedir } from 'os'
+let __dirname = homedir()
 
 async function checkType(exportPath, extension){
 
@@ -17,7 +19,7 @@ async function checkType(exportPath, extension){
     }
 
     let type = list.filter( dir => dir.name == parse)[0]
-
+    
     try{
 
         if(type.isDirectory()){
@@ -25,13 +27,11 @@ async function checkType(exportPath, extension){
         }else{
             return ''
         }
-
     }catch{
 
         return ''
 
     }
-
 }
 
 
@@ -45,12 +45,17 @@ async function actionArchive(type, __dirname, currentFile, newFile){
 
         let newFilePath = pathIsAbsolute(newFile) 
         ? pathJoin(newFile)
-        : pathJoin(pathDirname(currentFile), newFile) 
+        : pathJoin(pathDirname(currentFilePath),"\\", newFile) 
+
+
+        console.log({currentFile,newFile})
+        console.log({currentFileAbs: pathIsAbsolute(currentFile) ,newFileAbs:  pathIsAbsolute(newFile)  })
+
 
         if(type == 'compress'){
-
-            newFilePath = newFilePath + pathParse(currentFilePath)['base'] + '.br'
-
+            console.log({currentFilePath, newFilePath})
+            newFilePath = newFilePath + "\\" + pathParse(currentFilePath)['base'] + '.br'
+            console.log({newFilePath})
         }else if(type == 'decompress'){
             
             newFilePath = pathJoin(newFilePath, await checkType(newFilePath, pathParse(currentFilePath)['name']))
@@ -71,6 +76,5 @@ async function actionArchive(type, __dirname, currentFile, newFile){
     }
 
 }
-
 
 export default actionArchive
